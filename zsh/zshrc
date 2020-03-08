@@ -1,0 +1,197 @@
+# If you come from bash you might have to change your $PATH.
+# export PATH=$HOME/bin:/usr/local/bin:$PATH
+
+# Path to your oh-my-zsh installation.
+export ZSH="/home/cy/.oh-my-zsh"
+
+# Set name of the theme to load --- if set to "random", it will
+# load a random theme each time oh-my-zsh is loaded, in which case,
+# to know which specific one was loaded, run: echo $RANDOM_THEME
+# See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
+
+# theme
+ZSH_THEME="af-magic"
+# ZSH_THEME="agnoster"
+# ZSH_THEME="arrow"
+# ZSH_THEME="clean"
+# ZSH_THEME="daveverwer"
+# ZSH_THEME="fino-time"
+# ZSH_THEME="fwalch"
+# ZSH_THEME="josh"
+# ZSH_THEME="muse"
+# ZSH_THEME="rkj"
+# ZSH_THEME="robbyrussell"
+# ZSH_THEME="sonicradish"
+# ZSH_THEME="tjkirch"
+# ZSH_THEME="xiong-chiamiov"
+# ZSH_THEME="ys"
+
+# Set list of themes to pick from when loading at random
+# Setting this variable when ZSH_THEME=random will cause zsh to load
+# a theme from this variable instead of looking in ~/.oh-my-zsh/themes/
+# If set to an empty array, this variable will have no effect.
+# ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
+
+# Uncomment the following line to use case-sensitive completion.
+# CASE_SENSITIVE="true"
+
+# Uncomment the following line to use hyphen-insensitive completion.
+# Case-sensitive completion must be off. _ and - will be interchangeable.
+# HYPHEN_INSENSITIVE="true"
+
+# Uncomment the following line to disable bi-weekly auto-update checks.
+# DISABLE_AUTO_UPDATE="true"
+
+# Uncomment the following line to automatically update without prompting.
+# DISABLE_UPDATE_PROMPT="true"
+
+# Uncomment the following line to change how often to auto-update (in days).
+# export UPDATE_ZSH_DAYS=13
+
+# Uncomment the following line if pasting URLs and other text is messed up.
+# DISABLE_MAGIC_FUNCTIONS=true
+
+# Uncomment the following line to disable colors in ls.
+# DISABLE_LS_COLORS="true"
+
+# Uncomment the following line to disable auto-setting terminal title.
+# DISABLE_AUTO_TITLE="true"
+
+# Uncomment the following line to enable command auto-correction.
+# ENABLE_CORRECTION="true"
+
+# Uncomment the following line to display red dots whilst waiting for completion.
+# COMPLETION_WAITING_DOTS="true"
+
+# Uncomment the following line if you want to disable marking untracked files
+# under VCS as dirty. This makes repository status check for large repositories
+# much, much faster.
+# DISABLE_UNTRACKED_FILES_DIRTY="true"
+
+# Uncomment the following line if you want to change the command execution time
+# stamp shown in the history command output.
+# You can set one of the optional three formats:
+# "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
+# or set a custom format using the strftime function format specifications,
+# see 'man strftime' for details.
+# HIST_STAMPS="mm/dd/yyyy"
+
+# Would you like to use another custom folder than $ZSH/custom?
+# ZSH_CUSTOM=/path/to/new-custom-folder
+
+# Which plugins would you like to load?
+# Standard plugins can be found in ~/.oh-my-zsh/plugins/*
+# Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
+# Example format: plugins=(rails git textmate ruby lighthouse)
+# Add wisely, as too many plugins slow down shell startup.
+# plugins=(git)
+plugins=(git zsh-autosuggestions zsh-syntax-highlighting)
+
+source $ZSH/oh-my-zsh.sh
+
+# User configuration
+
+# export MANPATH="/usr/local/man:$MANPATH"
+
+# You may need to manually set your language environment
+# export LANG=en_US.UTF-8
+
+# Preferred editor for local and remote sessions
+# if [[ -n $SSH_CONNECTION ]]; then
+#   export EDITOR='vim'
+# else
+#   export EDITOR='mvim'
+# fi
+
+# Compilation flags
+# export ARCHFLAGS="-arch x86_64"
+
+# Set personal aliases, overriding those provided by oh-my-zsh libs,
+# plugins, and themes. Aliases can be placed here, though oh-my-zsh
+# users are encouraged to define aliases within the ZSH_CUSTOM folder.
+# For a full list of active aliases, run `alias`.
+#
+# Example aliases
+# alias zshconfig="mate ~/.zshrc"
+# alias ohmyzsh="mate ~/.oh-my-zsh"
+# EDITOR=vim
+# export EDITOR
+
+# vim 
+alias vi="vim"
+alias vim="nvim"
+
+# bash
+alias l="ls -CF"
+alias ll="ls -la"
+alias la="ls -aF"
+alias quit="exit"
+
+# server
+alias ser='ssh root@rescld.cn'
+
+# status
+alias ne="neofetch"
+alias cm='cmatrix'
+alias aq='asciiquarium'
+
+# simplify
+alias sudo='sudo -E'
+alias mkdir='mkdir -p'
+alias pyinstaller='pyinstaller -F'
+alias mysql='mysql -uroot -p'
+alias ra='ranger'
+alias word='python3 ~/word/run.py'
+alias fanyi='python3 ~/python/test/fanyi.py'
+alias i3='vim ~/.config/i3/config'
+alias i3s='vim ~/.config/i3status/config'
+
+# vim
+alias ivim='vim ~/.rescld-nvim/init.vim'
+alias pvim='vim ~/.rescld-nvim/config/plug.vim'
+alias svim='vim ~/.rescld-nvim/config/self.vim'
+alias cvim='vim ~/.rescld-nvim/config/config.vim'
+
+alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0|grep percentage'
+
+# virtualenv
+# export WORKON_HOME=$HOME/.virtualenvs
+# export VIRTUALENVWRAPPER_PYTHON=/usr/bin/python3
+# export VIRTUALENVWRAPPER_VIRTUALENV=/usr/local/bin/virtualenv
+# source /usr/local/bin/virtualenvwrapper.sh
+
+# FZF
+# [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
+[ -f /usr/share/fzf/completion.zsh ] && source /usr/share/fzf/completion.zsh
+[ -f /usr/share/fzf/key-bindings.zsh ] && source /usr/share/fzf/key-bindings.zsh
+export FZF_COMPLETION_TRIGGER='\'
+export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
+
+# jdk
+# JAVA_HOME=/usr/local/jdk
+# PATH=$JAVA_HOME/bin:$PATH
+# export JAVA_HOME PATH
+
+# ranger
+export RANGER_LOAD_DEFAULT_RC=FALSE
+
+# alacritty
+fpath+=${ZDOTDIR:-~}/.zsh_functions
+
+# home wifi
+alias link='sudo -b wpa_supplicant -B -c /home/cy/wifi/home.conf -i wlp3s0'
+
+# school wifi
+# alias link='sudo -b wpa_supplicant -B -c /home/cy/wifi/school.conf -i wlp3s0 && /home/cy/wifi/link'
+
+alias unlink='sudo killall wpa_supplicant'
+
+# backlight
+# alias ilight='sudo xbacklight -inc 10'
+# alias dlight='sudo xbacklight -dec 10'
+alias light='sudo chown cy:cy /sys/class/backlight/intel_backlight/brightness'
+
+# i3wm xinit
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+  exec startx
+fi
