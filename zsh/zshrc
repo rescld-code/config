@@ -117,23 +117,21 @@ source $ZSH/oh-my-zsh.sh
 # EDITOR=vim
 # export EDITOR
 
-# vim 
-alias vi="vim"
-alias vim="nvim"
-
 # bash
 alias l="ls -CF"
-alias ll="ls -la"
 alias la="ls -aF"
+alias ll="ls -lah"
 alias quit="exit"
 
 # server
 alias ser='ssh root@rescld.cn'
 
 # status
-alias ne="neofetch"
 alias cm='cmatrix'
 alias aq='asciiquarium'
+alias sne='screenfetch'
+alias neo='neofetch --ascii_distro'
+alias ne='neofetch --ascii_distro bilibili'
 
 # simplify
 alias sudo='sudo -E'
@@ -141,16 +139,16 @@ alias mkdir='mkdir -p'
 alias pyinstaller='pyinstaller -F'
 alias mysql='mysql -uroot -p'
 alias ra='ranger'
-alias word='python3 ~/word/run.py'
+alias word='cd ~/word && python3 ~/word/run.py'
 alias fanyi='python3 ~/python/test/fanyi.py'
 alias i3='vim ~/.config/i3/config'
 alias i3s='vim ~/.config/i3status/config'
 
 # vim
-alias ivim='vim ~/.rescld-nvim/init.vim'
-alias pvim='vim ~/.rescld-nvim/config/plug.vim'
-alias svim='vim ~/.rescld-nvim/config/self.vim'
-alias cvim='vim ~/.rescld-nvim/config/config.vim'
+alias ivim='vim ~/.config/nvim/init.vim'
+alias pvim='vim ~/.config/nvim/config/plug.vim'
+alias svim='vim ~/.config/nvim/config/self.vim'
+alias cvim='vim ~/.config/nvim/config/config.vim'
 
 alias battery='upower -i /org/freedesktop/UPower/devices/battery_BAT0|grep percentage'
 
@@ -179,10 +177,10 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # home wifi
-alias link='sudo -b wpa_supplicant -B -c /home/cy/wifi/home.conf -i wlp3s0'
+alias link='sudo -b wpa_supplicant -B -c /home/cy/wifi/home.conf -i wlp3s0 && sudo chown cy:cy /sys/class/backlight/intel_backlight/brightness'
 
 # school wifi
-# alias link='sudo -b wpa_supplicant -B -c /home/cy/wifi/school.conf -i wlp3s0 && /home/cy/wifi/link'
+# alias link='sudo -b wpa_supplicant -B -c /home/cy/wifi/school.conf -i wlp3s0 && sleep 10 && /home/cy/wifi/link'
 
 alias unlink='sudo killall wpa_supplicant'
 
@@ -193,5 +191,5 @@ alias light='sudo chown cy:cy /sys/class/backlight/intel_backlight/brightness'
 
 # i3wm xinit
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-  exec startx
+	exec startx
 fi

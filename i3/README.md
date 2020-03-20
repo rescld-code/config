@@ -11,10 +11,10 @@ ln -sf ~/.rescld-config/alacritty/alacritty.yml ~/.alacritty.yml
 - Menu
 	- rofi
 - Audio
-	- amixer
+	- alsa-utils
 - Background
 	- feh
-	- variety
 	- compton
 - Other
+	- i3lock
 	- ntfs-3g
