@@ -5672,20 +5672,20 @@ EOF
             read -rd '' ascii_data <<'EOF'
 ${c1}
     
-				     //    
-		  \\\\        //    
-		   \\\\      //    
-	##DDDDDDDDDDDDDDDDDDDDDDD##    
-	## DDDDDDDDDDDDDDDDDDDDD ##    
-	## hh                 hh ##    
-	## hh   //     \\\\     hh ##    
-	## hh  //       \\\\    hh ##    
-	## hh                 hh ##    
-	## hh     wwwww       hh ##    
-	## hh                 hh ##    
-	## MMMMMMMMMMMMMMMMMMMMM ##    
-	##MMMMMMMMMMMMMMMMMMMMMMM##    
-	     \/             \/
+   		     //    
+   	  \\\\        //    
+   	   \\\\      //    
+   ##DDDDDDDDDDDDDDDDDDDDDDD##    
+   ## DDDDDDDDDDDDDDDDDDDDD ##    
+   ## hh                 hh ##    
+   ## hh   //     \\\\     hh ##    
+   ## hh  //       \\\\    hh ##    
+   ## hh                 hh ##    
+   ## hh     wwwww       hh ##    
+   ## hh                 hh ##    
+   ## MMMMMMMMMMMMMMMMMMMMM ##    
+   ##MMMMMMMMMMMMMMMMMMMMMMM##    
+        \/             \/
 EOF
         ;;
 
