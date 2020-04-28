@@ -10,21 +10,25 @@ export ZSH="/home/cy/.oh-my-zsh"
 # See https://github.com/robbyrussell/oh-my-zsh/wiki/Themes
 
 # theme
-ZSH_THEME="af-magic"
-# ZSH_THEME="agnoster"
-# ZSH_THEME="arrow"
-# ZSH_THEME="clean"
-# ZSH_THEME="daveverwer"
-# ZSH_THEME="fino-time"
-# ZSH_THEME="fwalch"
+ZSH_THEME="chill" # https://github.com/PsychoPatate/chill.zsh-theme
+# ZSH_THEME="ys"
+# ZSH_THEME="rkj"
 # ZSH_THEME="josh"
 # ZSH_THEME="muse"
-# ZSH_THEME="rkj"
-# ZSH_THEME="robbyrussell"
-# ZSH_THEME="sonicradish"
+# ZSH_THEME="arrow"
+# ZSH_THEME="clean"
+# ZSH_THEME="simple"
+# ZSH_THEME="kardan"
+# ZSH_THEME="fwalch"
 # ZSH_THEME="tjkirch"
+# ZSH_THEME="agnoster"
+# ZSH_THEME="af-magic"
+# ZSH_THEME="fino-time"
+# ZSH_THEME="daveverwer"
+# ZSH_THEME="typewritten" # https://github.com/reobin/typewritten
+# ZSH_THEME="sonicradish"
+# ZSH_THEME="robbyrussell"
 # ZSH_THEME="xiong-chiamiov"
-# ZSH_THEME="ys"
 
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -120,8 +124,10 @@ source $ZSH/oh-my-zsh.sh
 # bash
 alias l="ls -CF"
 alias la="ls -aF"
-alias ll="ls -lah"
+alias ll="ls -lh"
 alias quit="exit"
+alias lrm='ranger ~/.recycler'
+alias rm="python3 ~/python/test/rm.py"
 
 # server
 alias ser='ssh root@rescld.cn'
@@ -134,21 +140,26 @@ alias neo='neofetch --ascii_distro'
 alias ne='neofetch --ascii_distro bilibili'
 
 # simplify
+alias ln='ln -sf'
+alias ra='ranger'
+alias du='du -sh'
 alias sudo='sudo -E'
 alias mkdir='mkdir -p'
 alias pyinstaller='pyinstaller -F'
 alias mysql='mysql -uroot -p'
-alias ra='ranger'
-alias word='cd ~/word && python3 ~/word/run.py'
+alias word='python3 ~/word/run.py'
 alias fanyi='python3 ~/python/test/fanyi.py'
 alias i3='vim ~/.config/i3/config'
 alias i3s='vim ~/.config/i3status/config'
 
 # vim
+alias vi='nvim'
+alias vim='nvim'
 alias ivim='vim ~/.config/nvim/init.vim'
 alias pvim='vim ~/.config/nvim/config/plug.vim'
 alias svim='vim ~/.config/nvim/config/self.vim'
 alias cvim='vim ~/.config/nvim/config/config.vim'
+export EDITOR=/usr/bin/nvim
 
 # virtualenv
 # export WORKON_HOME=$HOME/.virtualenvs
@@ -167,6 +178,13 @@ export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O 
 # JAVA_HOME=/usr/local/jdk
 # PATH=$JAVA_HOME/bin:$PATH
 # export JAVA_HOME PATH
+export JAVA_HOME=/usr/lib/jvm/default-runtime
+
+# golang
+export GO111MODULE=on
+export GOPATH=$HOME/.go
+export PATH=$PATH:/home/cy/.go/bin
+export GOPROXY=https://goproxy.cn,direct
 
 # ranger
 export RANGER_LOAD_DEFAULT_RC=FALSE
