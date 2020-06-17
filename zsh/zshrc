@@ -147,10 +147,12 @@ alias sudo='sudo -E'
 alias mkdir='mkdir -p'
 alias unon='killall oneko'
 alias mysql='mysql -uroot -p'
+alias sddm='systemctl start sddm'
+alias pyinstaller='pyinstaller -F'
 alias word='python3 ~/word/run.py'
 alias fanyi='python3 ~/python/test/fanyi.py'
-alias i3='vim ~/.config/i3/config'
-alias i3s='vim ~/.config/i3status/config'
+alias i3='vim ~/.rescld-code/i3/config'
+alias i3s='vim ~/.rescld-code/i3status/config'
 
 # vim
 alias vi='nvim'
@@ -193,12 +195,12 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # home wifi
-alias link='sudo -b wpa_supplicant -B -c /home/cy/wifi/home.conf -i wlp3s0 && sudo chown cy:cy /sys/class/backlight/intel_backlight/brightness'
+alias link='sudo systemctl stop NetworkManager && sudo -b wpa_supplicant -B -c /home/cy/wifi/home.conf -i wlp3s0 && sudo chown cy:cy /sys/class/backlight/intel_backlight/brightness'
 
 # school wifi
 # alias link='sudo -b wpa_supplicant -B -c /home/cy/wifi/school.conf -i wlp3s0 && sudo chown cy:cy /sys/class/backlight/intel_backlight/brightness && sleep 10 && /home/cy/wifi/link'
 
-alias unlink='sudo killall wpa_supplicant'
+alias unlink='sudo systemctl start NetworkManager && sudo killall wpa_supplicant'
 
 # backlight
 # alias ilight='sudo xbacklight -inc 10'
@@ -206,6 +208,8 @@ alias unlink='sudo killall wpa_supplicant'
 alias light='sudo chown cy:cy /sys/class/backlight/intel_backlight/brightness'
 
 # xinit
-if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-	exec startx
-fi
+# if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+# 	exec startx
+# fi
+
+export VBOX_USB=usbfs
