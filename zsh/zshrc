@@ -136,13 +136,13 @@ alias ser='ssh root@rescld.cn'
 alias cm='cmatrix'
 alias aq='asciiquarium'
 alias sne='screenfetch'
-alias neo='neofetch --ascii_distro'
-alias ne='neofetch --ascii_distro bilibili'
+alias ne='neofetch --ascii_distro'
 
 # simplify
 alias ln='ln -sf'
 alias ra='ranger'
 alias du='du -sh'
+alias lg='lazygit'
 alias sudo='sudo -E'
 alias mkdir='mkdir -p'
 alias unon='killall oneko'
@@ -200,7 +200,7 @@ alias link='sudo systemctl stop NetworkManager && sudo -b wpa_supplicant -B -c /
 # school wifi
 # alias link='sudo -b wpa_supplicant -B -c /home/cy/wifi/school.conf -i wlp3s0 && sudo chown cy:cy /sys/class/backlight/intel_backlight/brightness && sleep 10 && /home/cy/wifi/link'
 
-alias unlink='sudo systemctl start NetworkManager && sudo killall wpa_supplicant'
+alias unlink='sudo killall wpa_supplicant && sudo systemctl start NetworkManager'
 
 # backlight
 # alias ilight='sudo xbacklight -inc 10'
@@ -208,8 +208,6 @@ alias unlink='sudo systemctl start NetworkManager && sudo killall wpa_supplicant
 alias light='sudo chown cy:cy /sys/class/backlight/intel_backlight/brightness'
 
 # xinit
-# if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
-# 	exec startx
-# fi
-
-export VBOX_USB=usbfs
+if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
+	exec startx
+fi
