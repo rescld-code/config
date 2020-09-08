@@ -131,6 +131,7 @@ alias rm="python3 ~/python/test/rm.py"
 
 # server
 alias ser='ssh root@rescld.cn'
+alias pxy='export http_proxy=http://127.0.0.1:8889 && export https_proxy=https://127.0.0.1:8889'
 
 # status
 alias cm='cmatrix'
@@ -144,6 +145,7 @@ alias ra='ranger'
 alias du='du -sh'
 alias lg='lazygit'
 alias sudo='sudo -E'
+alias alsa='alsamixer'
 alias mkdir='mkdir -p'
 alias unon='killall oneko'
 alias mysql='mysql -uroot -p'
@@ -153,6 +155,7 @@ alias word='python3 ~/word/run.py'
 alias fanyi='python3 ~/python/test/fanyi.py'
 alias i3='vim ~/.rescld-code/i3/config'
 alias i3s='vim ~/.rescld-code/i3status/config'
+alias qv2ray='sudo qv2ray'
 
 # vim
 alias vi='nvim'
@@ -182,6 +185,9 @@ export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O 
 # export JAVA_HOME PATH
 export JAVA_HOME=/usr/lib/jvm/default-runtime
 
+# PyPi
+export PATH=$PATH:$HOME/.local/bin
+
 # golang
 export GO111MODULE=on
 export GOPATH=$HOME/.go
@@ -195,12 +201,13 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # home wifi
-alias link='sudo systemctl stop NetworkManager && sudo -b wpa_supplicant -B -c /home/cy/wifi/home.conf -i wlp3s0 && sudo chown cy:cy /sys/class/backlight/intel_backlight/brightness'
+# alias link='sudo systemctl stop NetworkManager && sudo -b wpa_supplicant -B -c /home/cy/wifi/home.conf -i wlp3s0 && sudo chown cy:cy /sys/class/backlight/intel_backlight/brightness'
 
 # school wifi
-# alias link='sudo -b wpa_supplicant -B -c /home/cy/wifi/school.conf -i wlp3s0 && sudo chown cy:cy /sys/class/backlight/intel_backlight/brightness && sleep 10 && /home/cy/wifi/link'
+alias link='sudo -b wpa_supplicant -B -c /home/cy/wifi/school.conf -i wlp3s0 && sudo chown cy:cy /sys/class/backlight/intel_backlight/brightness'
+alias submit='python3 /home/cy/python/test/link.py && ping rescld.cn'
 
-alias unlink='sudo killall wpa_supplicant && sudo systemctl start NetworkManager'
+alias unlink='sudo killall wpa_supplicant'
 
 # backlight
 # alias ilight='sudo xbacklight -inc 10'

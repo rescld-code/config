@@ -332,18 +332,24 @@ globalkeys = gears.table.join(
               {description = "show the menubar", group = "launcher"}),
 
 	-- Backlight
-    awful.key({ modkey,           }, "F5", function () os.execute("xbacklight -dec 1")                end,
-              {description = "backlight sub", group = "backlight"}),
-    awful.key({ modkey,           }, "F6", function () os.execute("xbacklight -inc 1")                end,
-              {description = "backlight add", group = "backlight"}),
+    awful.key({ modkey,            }, "F5", function () os.execute("xbacklight -dec 1") end,
+              {description = "decrease backlight", group = "backlight"}),
+    awful.key({ modkey,           }, "F6", function () os.execute("xbacklight -inc 1") end,
+              {description = "increase backlight", group = "backlight"}),
 
-	-- amixer
-    awful.key({ modkey,           }, "F10", function () os.execute("amixer set Master toggle")                end,
+	-- Amixer
+    awful.key({ modkey,           }, "F10", function () os.execute("amixer set Master toggle") end,
               {description = "amixer toggle", group = "amixer"}),
-    awful.key({ modkey,           }, "F11", function () os.execute("amixer set Master 1%-")                end,
+    awful.key({ modkey,           }, "F11", function () os.execute("amixer set Master 1%-") end,
               {description = "amixer sub", group = "amixer"}),
-    awful.key({ modkey,           }, "F12", function () os.execute("amixer set Master 1%+")                end,
-              {description = "amixer add", group = "amixer"})
+    awful.key({ modkey,           }, "F12", function () os.execute("amixer set Master 1%+") end,
+              {description = "amixer add", group = "amixer"}),
+
+	-- Other
+    awful.key({ modkey,           }, "p", function () os.execute("scrot") end,
+              {description = "scrot", group = "Other"}),
+    awful.key({ modkey, "Control" }, "l", function () os.execute("i3lock -i /home/cy/Downloads/background.png") end,
+              {description = "lock", group = "Other"})
 )
 
 clientkeys = gears.table.join(
@@ -507,7 +513,7 @@ awful.rules.rules = {
 
     -- Add titlebars to normal clients and dialogs
     { rule_any = {type = { "normal", "dialog" }
-      }, properties = { titlebars_enabled = true }
+      }, properties = { titlebars_enabled = false }
     },
 
     -- Set Firefox to always map on the tag named "2" on screen 1.
