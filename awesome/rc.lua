@@ -326,8 +326,8 @@ globalkeys = gears.table.join(
               end,
               {description = "lua execute prompt", group = "awesome"}),
     -- Menubar
-    -- awful.key({ modkey }, "p", function() menubar.show() end,
-    --           {description = "show the menubar", group = "launcher"})
+    awful.key({ modkey }, "p", function() menubar.show() end,
+              {description = "show the menubar", group = "launcher"}),
     awful.key({ "Mod1" }, "space", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
 
@@ -346,9 +346,9 @@ globalkeys = gears.table.join(
               {description = "amixer add", group = "amixer"}),
 
 	-- Other
-    awful.key({ modkey,           }, "p", function () os.execute("scrot") end,
-              {description = "scrot", group = "Other"}),
-    awful.key({ modkey, "Control" }, "l", function () os.execute("i3lock -i /home/cy/Downloads/background.png") end,
+    -- awful.key({ modkey,           }, "p", function () os.execute("scrot") end,
+    --           {description = "scrot", group = "Other"}),
+    awful.key({ modkey, "Control" }, "l", function () os.execute("i3lock -i /home/cy/Downloads/background/lock.png") end,
               {description = "lock", group = "Other"})
 )
 

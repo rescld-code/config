@@ -128,33 +128,39 @@ alias ll="ls -lh"
 alias quit="exit"
 alias lrm='ranger ~/.recycler'
 alias rm="python3 ~/python/test/rm.py"
+alias timedate="timedatectl set-ntp true"
+
+# proxy
+alias pxy='export http_proxy=http://127.0.0.1:8889'
+alias unpxy='unset http_proxy'
 
 # server
-alias ser='ssh root@rescld.cn'
-alias pxy='export http_proxy=http://127.0.0.1:8889 && export https_proxy=https://127.0.0.1:8889'
+alias ser='ssh -i ~/.ssh/rescld.cn.pem root@rescld.cn'
+alias sscp='scp -i ~/.ssh/rescld.cn.pem '
+alias pi='ssh pi@192.168.1.4' # raspberrypi
+alias nas="sudo mount -t cifs -o username='pi',password='raspberry',dir_mode=0777,file_mode=0777 //192.168.1.4/rescld /mnt"
 
 # status
 alias cm='cmatrix'
 alias aq='asciiquarium'
 alias sne='screenfetch'
-alias ne='neofetch --ascii_distro'
+alias ne='neofetch --ascii_distro blackarch'
 
 # simplify
-alias ln='ln -sf'
+# alias ln='ln -sf'
 alias ra='ranger'
-alias du='du -sh'
+alias du='sudo du -hc --max-depth=0'
+alias df='df -h'
 alias lg='lazygit'
+alias ipy='ipython'
 alias sudo='sudo -E'
 alias alsa='alsamixer'
 alias mkdir='mkdir -p'
 alias unon='killall oneko'
 alias mysql='mysql -uroot -p'
 alias sddm='systemctl start sddm'
-alias pyinstaller='pyinstaller -F'
-alias word='python3 ~/word/run.py'
 alias fanyi='python3 ~/python/test/fanyi.py'
-alias i3='vim ~/.rescld-code/i3/config'
-alias i3s='vim ~/.rescld-code/i3status/config'
+alias rename='python3 ~/python/test/rename.py'
 alias qv2ray='sudo qv2ray'
 
 # vim
@@ -185,6 +191,11 @@ export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O 
 # export JAVA_HOME PATH
 export JAVA_HOME=/usr/lib/jvm/default-runtime
 
+# Maven
+export M2_HOME=$HOME/.Maven/bin
+export MAVEN_HOME=$HOME/.Maven
+export PATH=$PATH:$MAVEN_HOME/bin
+
 # PyPi
 export PATH=$PATH:$HOME/.local/bin
 
@@ -201,11 +212,14 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # home wifi
-# alias link='sudo systemctl stop NetworkManager && sudo -b wpa_supplicant -B -c /home/cy/wifi/home.conf -i wlp3s0 && sudo chown cy:cy /sys/class/backlight/intel_backlight/brightness'
+alias link='sudo -b wpa_supplicant -B -c /home/cy/.wifi/home.conf -i wlp3s0'
+
+# Android wifi
+# alias link='sudo -b wpa_supplicant -B -c /home/cy/.wifi/Android.conf -i wlp3s0'
 
 # school wifi
-alias link='sudo -b wpa_supplicant -B -c /home/cy/wifi/school.conf -i wlp3s0 && sudo chown cy:cy /sys/class/backlight/intel_backlight/brightness'
-alias submit='python3 /home/cy/python/test/link.py && ping rescld.cn'
+# alias link='sudo -b wpa_supplicant -B -c /home/cy/.wifi/school.conf -i wlp3s0'
+# alias submit='python3 /home/cy/python/test/wifi.py && ping rescld.cn -c 3'
 
 alias unlink='sudo killall wpa_supplicant'
 

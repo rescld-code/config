@@ -3,8 +3,8 @@
 # AutoStart
 compton &
 # variety &
-fcitx &
-feh --bg-scale /home/cy/Pictures/ruki/12.jpg &
+fcitx5 &
+feh --bg-scale /home/cy/Downloads/background/desktop.jpg &
 # oneko &
 # screenkey &
 
@@ -13,7 +13,12 @@ feh --bg-scale /home/cy/Pictures/ruki/12.jpg &
 
 # lock
 xset s 180 # time
-xss-lock -n 'i3lock -i /home/cy/Downloads/background.png' -- i3lock -n &
+xss-lock -n 'i3lock -i /home/cy/Downloads/background/lock.png' -- i3lock -n &
 
 # notice
 python3 /home/cy/.config/awesome/autostart/notice.py &
+
+# fcitx
+gsettings set \
+org.gnome.settings-daemon.plugins.xsettings overrides \
+"{Gtk/IMModule:<fcitx>}"
