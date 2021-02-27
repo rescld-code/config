@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/cy/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -127,18 +127,18 @@ alias la="ls -aF"
 alias ll="ls -lh"
 alias quit="exit"
 alias lrm='ranger ~/.recycler'
-alias rm="python3 ~/python/test/rm.py"
+alias rm="python3 ~/Python/script/rm.py"
 alias timedate="timedatectl set-ntp true"
 
 # proxy
-alias pxy='export http_proxy=http://127.0.0.1:8889'
+alias pxy='export http_proxy=http://127.0.0.1:8889 && export https_proxy=http://127.0.0.1:8889'
 alias unpxy='unset http_proxy'
 
 # server
 alias ser='ssh -i ~/.ssh/rescld.cn.pem root@rescld.cn'
-alias sscp='scp -i ~/.ssh/rescld.cn.pem '
-alias pi='ssh pi@192.168.1.4' # raspberrypi
-alias nas="sudo mount -t cifs -o username='pi',password='raspberry',dir_mode=0777,file_mode=0777 //192.168.1.4/rescld /mnt"
+alias scp='python3 ~/Python/script/scp.py'
+alias pi='ssh pi@192.168.1.3' # raspberrypi
+alias nas="sudo mount -t cifs -o username='pi',password='raspberry',dir_mode=0777,file_mode=0777 //192.168.1.3/rescld /mnt"
 
 # status
 alias cm='cmatrix'
@@ -159,9 +159,15 @@ alias mkdir='mkdir -p'
 alias unon='killall oneko'
 alias mysql='mysql -uroot -p'
 alias sddm='systemctl start sddm'
-alias fanyi='python3 ~/python/test/fanyi.py'
-alias rename='python3 ~/python/test/rename.py'
-alias qv2ray='sudo qv2ray'
+alias fanyi='python3 ~/Python/script/fanyi.py'
+alias rename='python3 ~/Python/script/rename.py'
+alias qv2ray='sudo -b qv2ray && quit'
+alias p='ping rescld.cn'
+alias idea='~/.idea/bin/idea.sh'
+
+# clock in
+alias bilibili='python3 ~/Python/script/bilibili/clockIn.py'
+alias weibo='python3 ~/Python/script/weibo/chlockIn.py'
 
 # vim
 alias vi='nvim'
@@ -186,10 +192,9 @@ export FZF_COMPLETION_TRIGGER='\'
 export FZF_DEFAULT_OPTS="--height 40% --layout=reverse --preview '(highlight -O ansi {} || cat {}) 2> /dev/null | head -500'"
 
 # jdk
-# JAVA_HOME=/usr/local/jdk
-# PATH=$JAVA_HOME/bin:$PATH
-# export JAVA_HOME PATH
-export JAVA_HOME=/usr/lib/jvm/default-runtime
+export JAVA_HOME=$HOME/.jdk8/
+export PATH=$JAVA_HOME/bin:$PATH
+export CLASSPATH=.:$JAVA_HOME/lib/dt.jar:$JAVA_HOME/lib/tools.jar
 
 # Maven
 export M2_HOME=$HOME/.Maven/bin
@@ -199,10 +204,28 @@ export PATH=$PATH:$MAVEN_HOME/bin
 # PyPi
 export PATH=$PATH:$HOME/.local/bin
 
+# Conda
+# >>> conda initialize >>>
+# !! Contents within this block are managed by 'conda init' !!
+# __conda_setup="$('/opt/anaconda/bin/conda' 'shell.zsh' 'hook' 2> /dev/null)"
+# if [ $? -eq 0 ]; then
+#     eval "$__conda_setup"
+# 	alias base='conda deactivate'
+# 	alias rescld='conda activate rescld'
+# else
+#     if [ -f "/opt/anaconda/etc/profile.d/conda.sh" ]; then
+#         . "/opt/anaconda/etc/profile.d/conda.sh"
+#     else
+#         export PATH="/opt/anaconda/bin:$PATH"
+#     fi
+# fi
+# unset __conda_setup
+# <<< conda initialize <<<
+
 # golang
-export GO111MODULE=on
+export GO111MODULE=auto
 export GOPATH=$HOME/.go
-export PATH=$PATH:/home/cy/.go/bin
+export PATH=$PATH:$GOPATH/bin
 export GOPROXY=https://goproxy.cn,direct
 
 # ranger
@@ -212,13 +235,13 @@ export RANGER_LOAD_DEFAULT_RC=FALSE
 fpath+=${ZDOTDIR:-~}/.zsh_functions
 
 # home wifi
-alias link='sudo -b wpa_supplicant -B -c /home/cy/.wifi/home.conf -i wlp3s0'
+alias link="sudo -b wpa_supplicant -B -c $HOME/.wifi/home.conf -i wlp3s0"
 
 # Android wifi
-# alias link='sudo -b wpa_supplicant -B -c /home/cy/.wifi/Android.conf -i wlp3s0'
+# alias link="sudo -b wpa_supplicant -B -c $HOME/.wifi/Android.conf -i wlp3s0"
 
 # school wifi
-# alias link='sudo -b wpa_supplicant -B -c /home/cy/.wifi/school.conf -i wlp3s0'
+# alias link="sudo -b wpa_supplicant -B -c $HOME/.wifi/school.conf -i wlp3s0"
 # alias submit='python3 /home/cy/python/test/wifi.py && ping rescld.cn -c 3'
 
 alias unlink='sudo killall wpa_supplicant'
@@ -226,9 +249,10 @@ alias unlink='sudo killall wpa_supplicant'
 # backlight
 # alias ilight='sudo xbacklight -inc 10'
 # alias dlight='sudo xbacklight -dec 10'
-alias light='sudo chown cy:cy /sys/class/backlight/intel_backlight/brightness'
+alias light='sudo chown cyun:cyun /sys/class/backlight/intel_backlight/brightness'
 
 # xinit
 if [[ ! $DISPLAY && $XDG_VTNR -eq 1 ]]; then
 	exec startx
 fi
+

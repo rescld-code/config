@@ -1,10 +1,10 @@
 #!/bin/bash
 
 # AutoStart
-compton &
+compton -i 1&
 # variety &
-fcitx5 &
-feh --bg-scale /home/cy/Downloads/background/desktop.jpg &
+# fcitx5 &
+feh --bg-scale $HOME/.config/awesome/background/desktop.jpg &
 # oneko &
 # screenkey &
 
@@ -13,10 +13,16 @@ feh --bg-scale /home/cy/Downloads/background/desktop.jpg &
 
 # lock
 xset s 180 # time
-xss-lock -n 'i3lock -i /home/cy/Downloads/background/lock.png' -- i3lock -n &
+lock_img="i3lock -i $HOME/.config/awesome/background/lock.png"
+xss-lock -n "$lock_img" -- i3lock -n &
 
 # notice
-python3 /home/cy/.config/awesome/autostart/notice.py &
+python3 $HOME/.config/awesome/autostart/script/notice.py &
+python3 $HOME/.config/awesome/autostart/script/bilibili/status.py &
+
+# clock in
+python3 $HOME/.config/awesome/autostart/script/bilibili/clockIn.py &
+python3 $HOME/.config/awesome/autostart/script/weibo/chlockIn.py &
 
 # fcitx
 gsettings set \
