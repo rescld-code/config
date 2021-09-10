@@ -332,23 +332,23 @@ globalkeys = gears.table.join(
               {description = "show the menubar", group = "launcher"}),
 
 	-- Backlight
-    awful.key({ modkey,            }, "F5", function () os.execute("xbacklight -dec 1") end,
+    awful.key({ modkey,           }, "F5", function () os.execute("xbacklight -dec 2") end,
               {description = "decrease backlight", group = "backlight"}),
-    awful.key({ modkey,           }, "F6", function () os.execute("xbacklight -inc 1") end,
+    awful.key({ modkey,           }, "F6", function () os.execute("xbacklight -inc 2") end,
               {description = "increase backlight", group = "backlight"}),
 
 	-- Amixer
     awful.key({ modkey,           }, "F10", function () os.execute("amixer set Master toggle") end,
               {description = "amixer toggle", group = "amixer"}),
-    awful.key({ modkey,           }, "F11", function () os.execute("amixer set Master 1%-") end,
+    awful.key({ modkey,           }, "F11", function () os.execute("amixer set Master 2%-") end,
               {description = "amixer sub", group = "amixer"}),
-    awful.key({ modkey,           }, "F12", function () os.execute("amixer set Master 1%+") end,
+    awful.key({ modkey,           }, "F12", function () os.execute("amixer set Master 2%+") end,
               {description = "amixer add", group = "amixer"}),
 
 	-- Other
     awful.key({ modkey,           }, "p", function () os.execute("scrot") end,
               {description = "scrot", group = "Other"}),
-    awful.key({                   }, "F1", function () os.execute("flameshot gui") end,
+    awful.key({ modkey,           }, "F1", function () os.execute("flameshot gui") end,
               {description = "scrot", group = "Other"}),
     awful.key({ modkey, "Control" }, "l", function () os.execute("i3lock -i $HOME/.config/awesome/background/lock.png") end,
               {description = "lock", group = "Other"})

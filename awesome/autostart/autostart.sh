@@ -3,7 +3,8 @@
 # AutoStart
 compton -i 1&
 # variety &
-# fcitx5 &
+# utools &
+fcitx5 &
 feh --bg-scale $HOME/.config/awesome/background/desktop.jpg &
 # oneko &
 # screenkey &
@@ -18,11 +19,10 @@ xss-lock -n "$lock_img" -- i3lock -n &
 
 # notice
 python3 $HOME/.config/awesome/autostart/script/notice.py &
-python3 $HOME/.config/awesome/autostart/script/bilibili/status.py &
 
 # clock in
-python3 $HOME/.config/awesome/autostart/script/bilibili/clockIn.py &
-python3 $HOME/.config/awesome/autostart/script/weibo/chlockIn.py &
+# python3 $HOME/.config/awesome/autostart/script/bilibili/clockIn.py &
+# python3 $HOME/.config/awesome/autostart/script/weibo/clockIn.py &
 
 # fcitx
 gsettings set \
