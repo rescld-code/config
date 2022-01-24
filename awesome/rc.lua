@@ -107,7 +107,7 @@ mykeyboardlayout = awful.widget.keyboardlayout()
 
 -- {{{ Wibar
 -- Create a textclock widget
-mytextclock = wibox.widget.textclock()
+mytextclock = wibox.widget.textclock("%b %d %H:%M:%S", 1)
 
 -- Create a wibox for each screen and add it
 local taglist_buttons = gears.table.join(
@@ -213,7 +213,19 @@ awful.screen.connect_for_each_screen(function(s)
             layout = wibox.layout.fixed.horizontal,
             mykeyboardlayout,
             wibox.widget.systray(),
+            wibox.widget.textbox(" | "),
+            awful.widget.watch("amixer get Master", 0.1, function(widget, stdout)
+                local audio_size = ""
+                local audio_status = ""
+                for size, status in stdout:gmatch("%[(%d+%%)%] %[(%w+)%]") do
+                    audio_size =  size
+                    audio_status =  status
+                end
+                widget:set_text(audio_size .. " " .. audio_status)
+            end),
+            wibox.widget.textbox(" | "),
             mytextclock,
+            wibox.widget.textbox(" | "),
             s.mylayoutbox,
         },
     }
@@ -331,24 +343,24 @@ globalkeys = gears.table.join(
     awful.key({ "Mod1" }, "space", function() menubar.show() end,
               {description = "show the menubar", group = "launcher"}),
 
-	-- Backlight
-    awful.key({ modkey,           }, "F5", function () os.execute("xbacklight -dec 2") end,
-              {description = "decrease backlight", group = "backlight"}),
-    awful.key({ modkey,           }, "F6", function () os.execute("xbacklight -inc 2") end,
-              {description = "increase backlight", group = "backlight"}),
+    -- Backlight
+    awful.key({}, "XF86MonBrightnessDown", function () os.execute("xbacklight -dec 2") end,
+              {description = "decrease backlight", group = "Backlight"}),
+    awful.key({}, "XF86MonBrightnessUp", function () os.execute("xbacklight -inc 2") end,
+              {description = "increase backlight", group = "Backlight"}),
 
-	-- Amixer
-    awful.key({ modkey,           }, "F10", function () os.execute("amixer set Master toggle") end,
-              {description = "amixer toggle", group = "amixer"}),
-    awful.key({ modkey,           }, "F11", function () os.execute("amixer set Master 2%-") end,
-              {description = "amixer sub", group = "amixer"}),
-    awful.key({ modkey,           }, "F12", function () os.execute("amixer set Master 2%+") end,
-              {description = "amixer add", group = "amixer"}),
+    -- Audio
+    awful.key({}, "XF86AudioMute", function() os.execute("amixer set Master toggle") end,
+              {description = "amixer toggle", group = "Audio"}),
+    awful.key({}, "XF86AudioLowerVolume", function() os.execute("amixer set Master 1%-") end,
+              {description = "amixer sub", group = "Audio"}),
+    awful.key({}, "XF86AudioRaiseVolume", function() os.execute("amixer set Master 1%+") end,
+              {description = "amixer add", group = "Audio"}),
 
-	-- Other
-    awful.key({ modkey,           }, "p", function () os.execute("scrot") end,
-              {description = "scrot", group = "Other"}),
-    awful.key({ modkey,           }, "F1", function () os.execute("flameshot gui") end,
+    -- Other
+    awful.key({                   }, "Print", function () os.execute("scrot") end,
+              {description = "fullscreen scrot", group = "Other"}),
+    awful.key({ modkey,           }, "p", function () os.execute("flameshot gui") end,
               {description = "scrot", group = "Other"}),
     awful.key({ modkey, "Control" }, "l", function () os.execute("i3lock -i $HOME/.config/awesome/background/lock.png") end,
               {description = "lock", group = "Other"})
@@ -589,4 +601,30 @@ end)
 -- }}}
 --
 
+-- 系统电量提醒
+local charge_warn1 = false
+local charge_warn2 = false
+awful.widget.watch("acpi", 5, function(widget, stdout)
+	local charge = stdout:match("(%d+)%%")
+	if(tonumber(charge) < 20 and not charge_warn1) then
+		charge_warn1 = true
+		naughty.notify({
+			preset = naughty.config.presets.critical,
+			title = "System Charge",
+			text = stdout,
+		})
+	elseif(tonumber(charge) < 10 and not charge_warn2) then
+		charge_warn2 = true
+		naughty.notify({
+			preset = naughty.config.presets.critical,
+			title = "System Charge",
+			text = stdout,
+		})
+	elseif(tonumber(charge) >= 20) then
+		charge_warn1 = false
+		charge_warn2 = false
+	end
+end)
+
+-- 自动化脚本
 os.execute("$HOME/.config/awesome/autostart/autostart.sh")

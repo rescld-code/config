@@ -17,13 +17,6 @@ xset s 180 # time
 lock_img="i3lock -i $HOME/.config/awesome/background/lock.png"
 xss-lock -n "$lock_img" -- i3lock -n &
 
-# notice
-python3 $HOME/.config/awesome/autostart/script/notice.py &
-
-# clock in
-# python3 $HOME/.config/awesome/autostart/script/bilibili/clockIn.py &
-# python3 $HOME/.config/awesome/autostart/script/weibo/clockIn.py &
-
 # fcitx
 gsettings set \
 org.gnome.settings-daemon.plugins.xsettings overrides \

@@ -3,7 +3,7 @@ alias l="ls -CF"
 alias la="ls -aF"
 alias ll="ls -l"
 alias quit="exit"
-alias lrm="ranger $HOME/.local/trash"
+alias lrm="ranger $HOME/.local/recycle"
 alias rm="python3 $HOME/Python/script/rm.py"
 alias timedate="timedatectl set-ntp true"
 
@@ -12,7 +12,7 @@ alias Q="shutdown -h now"
 alias R="shutdown -r now"
 
 # status
-alias cm="cmatrix"
+alias cm="cmatrix -C blue"
 alias aq="asciiquarium"
 alias sne="screenfetch"
 alias ne="neofetch --ascii_distro blackarch"

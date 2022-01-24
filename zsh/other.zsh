@@ -7,18 +7,18 @@ function clockIn(){
 }
 
 # home wifi
-# alias link="sudo -b wpa_supplicant -B -c $HOME/.wifi/home.conf -i wlp3s0"
+alias link="sudo -b wpa_supplicant -B -c $HOME/.wifi/home.conf -i wlp3s0"
 
 # school wifi
-alias link="sudo -b wpa_supplicant -B -c $HOME/.wifi/FJPIT.conf -i wlp3s0"
-alias submit="python3 $HOME/Python/script/FJPIT.py"
+# alias link="sudo -b wpa_supplicant -B -c $HOME/.wifi/FJPIT.conf -i wlp3s0"
+# alias submit="python3 $HOME/Python/script/FJPIT.py"
 
 alias unlink="sudo killall wpa_supplicant"
 
 # backlight
 # alias ilight="sudo xbacklight -inc 10"
 # alias dlight="sudo xbacklight -dec 10"
-alias light="sudo chown cyun:cyun /sys/class/backlight/intel_backlight/brightness"
+alias backlight="sudo chown cyun:cyun /sys/class/backlight/intel_backlight/brightness"
 
 # server
 alias ser="ssh -i $HOME/.ssh/rescld.cn.pem ubuntu@rescld.cn"
